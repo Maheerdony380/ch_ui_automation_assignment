@@ -21,7 +21,7 @@ public class TestBase {
     public TestBase(){
         try {
             prop = new Properties();
-            FileInputStream inputProperties = new FileInputStream("./src/test/resources/custom.properties");
+            FileInputStream inputProperties = new FileInputStream("./src/main/resources/custom.properties");
             prop.load(inputProperties);
         } catch (FileNotFoundException e) {
             System.out.println("Properties FileNotFoundException");
