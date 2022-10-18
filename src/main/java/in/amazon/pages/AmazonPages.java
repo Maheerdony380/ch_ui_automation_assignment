@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+
+import org.testng.Assert;
+
 public class AmazonPages extends TestBase {
 
     // hamburger menu
@@ -76,11 +80,18 @@ public class AmazonPages extends TestBase {
         secondItem.click();
     }
 
-    public void verifyAboutItemTitle(){
-        System.out.println(aboutItemTitle.getText());
+    public void doSwitchTab(){
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+    }
+
+    public void verifyAboutItemTitle(String expectedTitle){
+        String actualText = aboutItemTitle.getText();
+
+        Assert.assertEquals(actualText, expectedTitle);
     }
 
     public void logTextAboutItemContent(){
-        aboutItemContent.getText();
+        System.out.println(aboutItemContent.getText());
     }
 }

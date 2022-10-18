@@ -29,33 +29,33 @@ public class UI_Steps {
     }
 
     @When("Scroll down and filter the results by Brand {string}")
-    public void scrollAndFilterResultsByBrand(String string) throws InterruptedException {
-        Thread.sleep(3000);
+    public void scrollAndFilterResultsByBrand(String string) {
         amazonPages.clickOnSamsungBrand();
     }
 
     @When("Sort the {string} results with price {string}")
-    public void sortResultsWithPrice(String string, String string2) throws InterruptedException {
-        Thread.sleep(3000);
+    public void sortResultsWithPrice(String string, String string2) {
         amazonPages.clickOnSortDropdown();
         amazonPages.clickOnPriceHighToLow();
     }
 
     @When("Click on the second highest priced item")
     public void clickOnSecondHighestPricedItem() {
-        System.out.println("clickOnSecondHighestPricedItem()");
         amazonPages.clickOnSecondItem();
     }
 
     @When("Switch the Window")
     public void switchTheWindow() {
+        amazonPages.doSwitchTab();
     }
 
     @Then("Assert that {string} section is present")
-    public void assertSection(String string) {
+    public void assertSection(String text) {
+        amazonPages.verifyAboutItemTitle(text);
     }
 
     @Then("Log this section text to console")
     public void logSectionTextToConsole() {
+        amazonPages.logTextAboutItemContent();
     }
 }
